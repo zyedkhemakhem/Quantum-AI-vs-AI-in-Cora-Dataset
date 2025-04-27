@@ -1,0 +1,40 @@
+.user-container {
+    padding: 2rem;
+    font-family: 'Arial', sans-serif;
+    background-color: #ffffff;
+    color: #000;
+  }
+  
+  .user-container h1 {
+    color: #336699;
+    font-size: 24px;
+  }
+  
+  .user-container button {
+    background-color: #228B22;
+    color: white;
+    border: none;
+    padding: 0.6rem 1rem;
+    border-radius: 5px;
+    margin-right: 1rem;
+    margin-bottom: 1rem;
+    cursor: pointer;
+  }
+  
+  .user-container button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+  
+  .user-container pre {
+    background-color: #f4f4f4;
+    padding: 1rem;
+    border-left: 5px solid #228B22;
+    overflow-x: auto;
+  }
+  
+  .user-container img {
+    max-width: 100%;
+    margin-top: 1rem;
+  }
+  

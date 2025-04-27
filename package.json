@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "@codemirror/lang-python": "^6.2.0",
+    "@uiw/react-codemirror": "^4.23.10"
+  }
+}
