@@ -9,7 +9,7 @@ function CodeEditor({ title, apiEndpoint }) {
   useEffect(() => {
     const fetchInitialCode = async () => {
       try {
-        const res = await fetch(apiEndpoint.replace('/update/', '/get/')); // ✅ doit appeler /get/
+        const res = await fetch(apiEndpoint.replace('/update/', '/get/')); 
         const data = await res.json();
         if (data.code) {
           setCode(data.code);
@@ -39,7 +39,7 @@ function CodeEditor({ title, apiEndpoint }) {
     });
     setSaving(false);
     if (res.ok) alert(`✅ ${title} sauvegardé avec succès`);
-    else alert('❌ Erreur lors de la sauvegarde');
+    else alert(' Erreur lors de la sauvegarde');
   };
 
   return (

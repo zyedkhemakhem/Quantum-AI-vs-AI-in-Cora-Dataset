@@ -38,7 +38,6 @@ def update_code(request):
             data = json.loads(request.body)
             code = data.get("code")
             if code:
-                # Chemin du fichier Python à modifier (ex : gcn_trainer.py)
                 filepath = os.path.join(os.path.dirname(__file__), "trainers", "gcn_trainer.py")
                 with open(filepath, "w", encoding="utf-8") as f:
                     f.write(code)
