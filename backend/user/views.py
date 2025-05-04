@@ -98,6 +98,7 @@ class UserDetailView(APIView):
             return Response({"error": "Utilisateur non trouvé"}, status=status.HTTP_404_NOT_FOUND)
         user.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
+                
     
 
 # VUE POUR DEVELOPER
@@ -114,3 +115,9 @@ class UserDashboard(APIView):
 
     def get(self, request):
         return Response({"message": "Bienvenue sur votre espace utilisateur."})
+
+class TestAdminView(APIView):
+    permission_classes = [IsAuthenticated, IsAdmin]
+
+    def get(self, request):
+        return Response({"message": "Vous êtes bien admin."})
