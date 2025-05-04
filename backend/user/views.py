@@ -14,6 +14,8 @@ from rest_framework.permissions import AllowAny
 
 from .permissions import IsAdmin, IsDeveloper, IsNormalUser
 
+from django.db import IntegrityError
+
 #génère un token d'authentification JWT (refresh + access) pour un utilisateur donné
 def get_tokens_for_user(user):
     refresh = RefreshToken.for_user(user)
@@ -78,6 +80,7 @@ class UserDetailView(APIView):
             return CustomUser.objects.get(pk=pk)
         except CustomUser.DoesNotExist:
             return None
+        
     #UPDATE
     def put(self, request, *args, **kwargs):
         pk = kwargs.get("pk")
@@ -90,15 +93,19 @@ class UserDetailView(APIView):
             serializer.save()
             return Response(serializer.data)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    
     #DELETE
-    def delete(self, request, *args, **kwargs):
-        pk = kwargs.get("pk")
-        user = self.get_object(pk)
-        if not user:
-            return Response({"error": "Utilisateur non trouvé"}, status=status.HTTP_404_NOT_FOUND)
-        user.delete()
-        return Response(status=status.HTTP_204_NO_CONTENT)
-                
+    def delete(self, request, pk):
+        try:
+            user = CustomUser.objects.get(pk=pk)
+            user.delete()
+            return Response({'message': 'Utilisateur supprimé avec succès.'}, status=status.HTTP_204_NO_CONTENT)
+        except CustomUser.DoesNotExist:
+            return Response({'error': 'Utilisateur non trouvé.'}, status=status.HTTP_404_NOT_FOUND)
+        except IntegrityError:
+            return Response({
+                'error': 'Impossible de supprimer cet utilisateur car des objets sont encore liés à lui. Veuillez d\'abord les supprimer ou transférer leur propriété.'
+            }, status=status.HTTP_400_BAD_REQUEST)
     
 
 # VUE POUR DEVELOPER
@@ -115,6 +122,7 @@ class UserDashboard(APIView):
 
     def get(self, request):
         return Response({"message": "Bienvenue sur votre espace utilisateur."})
+
 
 class TestAdminView(APIView):
     permission_classes = [IsAuthenticated, IsAdmin]
