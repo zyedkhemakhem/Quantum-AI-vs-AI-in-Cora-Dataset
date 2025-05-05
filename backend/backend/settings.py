@@ -40,6 +40,9 @@ INSTALLED_APPS = [
     'ia_model',
     'corsheaders',
     'user',
+    'rest_framework_simplejwt',
+    'rest_framework',
+
 
 ]
 

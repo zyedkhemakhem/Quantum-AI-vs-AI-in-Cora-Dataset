@@ -129,3 +129,17 @@ class TestAdminView(APIView):
 
     def get(self, request):
         return Response({"message": "Vous êtes bien admin."})
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework.permissions import IsAuthenticated
+from .permissions import IsAdmin
+from .models import CustomUser
+from .serializers import UserSerializer
+
+class ListUsersView(APIView):
+    permission_classes = [IsAuthenticated, IsAdmin]
+
+    def get(self, request):
+        users = CustomUser.objects.all()
+        serializer = UserSerializer(users, many=True)
+        return Response(serializer.data)

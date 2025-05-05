@@ -23,11 +23,10 @@ class LoginSerializer(serializers.Serializer):
         raise serializers.ValidationError("Invalid credentials")
 
 class UserSerializer(serializers.ModelSerializer):
-    password = serializers.CharField(write_only=True)
-
     class Meta:
         model = CustomUser
-        fields = ["username", "password", "email", "is_admin", "is_developer"]  # Retiré is_staff
+        fields = ["id", "username", "email", "is_admin", "is_developer"]  # ✅ ajout de "id"
+
 
     def create(self, validated_data):
         return CustomUser.objects.create_user(**validated_data)
