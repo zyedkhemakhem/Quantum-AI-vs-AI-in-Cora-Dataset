@@ -1,0 +1,28 @@
+/* frontend/src/styles/DeveloperPage.css */
+
+.developer-container {
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    background: #f5f5f5;
+    font-family: 'Segoe UI', sans-serif;
+  }
+  
+  .developer-container h1 {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: #333;
+  }
+  
+  .code-section {
+    margin-bottom: 2rem;
+  }
+  
+  .code-section h2 {
+    margin-bottom: 0.5rem;
+    color: #007bff;
+    font-size: 1.25rem;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 0.25rem;
+  }
+  
