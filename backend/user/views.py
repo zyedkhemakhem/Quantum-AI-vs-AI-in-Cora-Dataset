@@ -129,3 +129,47 @@ class TestAdminView(APIView):
 
     def get(self, request):
         return Response({"message": "Vous êtes bien admin."})
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework.permissions import IsAuthenticated
+from .permissions import IsAdmin
+from .models import CustomUser
+from .serializers import UserSerializer
+
+class ListUsersView(APIView):
+    permission_classes = [IsAuthenticated, IsAdmin]
+
+    def get(self, request):
+        users = CustomUser.objects.all()
+        serializer = UserSerializer(users, many=True)
+        return Response(serializer.data)
+    
+from rest_framework.decorators import api_view, permission_classes
+from rest_framework.parsers import JSONParser
+
+@api_view(['PUT'])
+@permission_classes([IsAuthenticated, IsAdmin])
+def update_user_role(request, id):
+    try:
+        user = CustomUser.objects.get(pk=id)
+        data = JSONParser().parse(request)
+        new_role = data.get('role')
+
+        if new_role == 'admin':
+            user.is_admin = True
+            user.is_developer = False
+        elif new_role == 'developer':
+            user.is_admin = False
+            user.is_developer = True
+        elif new_role == 'user':
+            user.is_admin = False
+            user.is_developer = False
+        else:
+            return Response({"error": "Rôle invalide."}, status=400)
+
+        user.save()
+        return Response({"message": "Rôle mis à jour avec succès."})
+
+    except CustomUser.DoesNotExist:
+        return Response({"error": "Utilisateur non trouvé."}, status=404)
+

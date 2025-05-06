@@ -82,7 +82,7 @@ def run_gcn():
         "accuracy": f"{acc*100:.2f}%",
         "log": buffer.getvalue(),
         "parameters": {
-            "layers": 3 ,
+            "layers": 2 ,
             "dataset_size": data.x.shape[0]
         }
     }

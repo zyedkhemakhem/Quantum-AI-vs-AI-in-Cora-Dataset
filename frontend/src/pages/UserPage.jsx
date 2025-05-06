@@ -4,6 +4,8 @@ import VisualizationButtons from '../components/VisualizationButtons';
 import TrainingResults from '../components/TrainingResults';
 import Visualizations from '../components/Visualizations';
 import '../styles/UserPage.css'; // ton css user
+import LogoutButton from "../components/LogoutButton";
+
 
 function UserPage() {
   const [hasTrained, setHasTrained] = useState(false);
@@ -66,6 +68,7 @@ function UserPage() {
 
   return (
     <div className="user-container">
+      <LogoutButton />
       <h1>🧪 Interface Utilisateur</h1>
 
       <RunnerButtons onTrain={handleTrain} loading={loading} />
