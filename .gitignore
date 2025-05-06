@@ -16,3 +16,4 @@ dist/
 
 # Logs
 *.log
+backend/ia_model/trainers/CoraAugmented/*.csv
