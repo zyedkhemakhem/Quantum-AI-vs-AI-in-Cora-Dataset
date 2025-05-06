@@ -1,6 +1,8 @@
 from django.urls import path
 from .views import RegisterView, LoginView, UserProfile, UserDetailView, DeveloperDashboard, UserDashboard, TestAdminView
 from .views import ListUsersView
+from .views import update_user_role
+
 
 
 urlpatterns = [
@@ -12,6 +14,8 @@ urlpatterns = [
     path('user/dashboard/', UserDashboard.as_view(), name='user-dashboard'),
     path('test-admin/', TestAdminView.as_view()),
     path('user/list/', ListUsersView.as_view(), name='user-list'),
+    path('user/<int:id>/update-role/', update_user_role),
+
 
 
 ]
