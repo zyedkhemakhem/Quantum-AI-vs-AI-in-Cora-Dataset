@@ -1,6 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 
+
 function AdminCreateUser() {
   const [formData, setFormData] = useState({
     username: "",
@@ -44,6 +45,8 @@ function AdminCreateUser() {
   };
 
   return (
+
+   
     <div style={{ maxWidth: "400px", margin: "2rem auto" }}>
       <h2>➕ Ajouter un utilisateur</h2>
       {message && <p>{message}</p>}

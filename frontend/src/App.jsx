@@ -2,8 +2,11 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-d
 import AdminPage from './pages/AdminPage';
 import DeveloperPage from './pages/DeveloperPage';
 import UserPage from './pages/UserPage';
-import Login from './components/Login';
-import SignUp from './components/SignUp';
+import Login from './pages/Login';
+import SignUp from './pages/SignUp';
+import Layout from './components/Layout';
+import "./App.css";
+import Home from './pages/Home';
 
 const ProtectedRoute = ({ children }) => {
   const token = localStorage.getItem("accessToken");
@@ -14,27 +17,50 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Login />} />
-        <Route path="/signup" element={<SignUp />} />
+        <Route path="/" element={
+          <Layout>
+          <Home />
+          </Layout>
+          } />
+        <Route path="/signup" element={
+          <Layout>
+          <SignUp />
+          </Layout>
+          } />
 
+        <Route path="/login" element={
+          <Layout>
+          <Login />
+          </Layout>
+          } />
+        
         <Route path="/admin" element={
           <ProtectedRoute>
-            <AdminPage />
+            <Layout>
+              <AdminPage />
+            </Layout>
           </ProtectedRoute>
         } />
 
         <Route path="/developer" element={
           <ProtectedRoute>
-            <DeveloperPage />
+            <Layout>
+              <DeveloperPage />
+            </Layout>
           </ProtectedRoute>
         } />
 
         <Route path="/user" element={
           <ProtectedRoute>
-            <UserPage />
+            <Layout>
+              <UserPage />
+            </Layout>
           </ProtectedRoute>
         } />
       </Routes>
+
+      
+
     </Router>
   );
 }

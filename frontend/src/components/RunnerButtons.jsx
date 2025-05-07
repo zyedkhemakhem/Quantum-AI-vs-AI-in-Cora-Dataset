@@ -6,16 +6,18 @@ function RunnerButtons({ onTrain, loading }) {
 
   return (
     <div style={{ marginBottom: "1rem" }}>
+      <div className="button-group">
       {models.map((model) => (
         <button
           key={model}
           onClick={() => onTrain(model)}
           disabled={loading}
-          className="primary"
+
         >
           {model.toUpperCase()}
         </button>
       ))}
+      </div>
     </div>
   );
 }

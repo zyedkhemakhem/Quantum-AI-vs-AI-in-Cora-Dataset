@@ -1,0 +1,114 @@
+.signup-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+    background: linear-gradient(135deg, #fbefff, #e5d4ff);
+    overflow-x: hidden;
+  }
+  
+  .signup-form {
+    background: #ffffff;
+    padding: 2.5rem;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    width: 350px;
+    animation: fadeIn 1.2s ease-in-out;
+  }
+  
+  .signup-form h2 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: #a36dfd;
+    font-size: 2rem;
+    animation: slideIn 1.2s ease-in-out;
+  }
+  
+  .signup-form label {
+    font-weight: 500;
+    color: #6a0dad;
+    display: block;
+    margin-bottom: 0.3rem;
+  }
+  
+  .signup-form input {
+    width: 100%;
+    padding: 0.6rem;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    font-size: 1rem;
+    margin-bottom: 1.2rem;
+    transition: border 0.3s ease;
+  }
+  
+  .signup-form input:focus {
+    border-color: #d66dff;
+    outline: none;
+    box-shadow: 0 0 6px rgba(214, 109, 255, 0.3);
+  }
+  
+  .signup-form button {
+    width: 100%;
+    padding: 0.75rem;
+    background: #a36dfd;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+  }
+  
+  .signup-form button:hover {
+    background: #d66dff;
+    transform: translateY(-2px);
+  }
+  
+  .signup-error {
+    color: #d9534f;
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+  
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+      transform: scale(0.97);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  
+  @keyframes slideIn {
+    0% {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .signup-footer {
+    margin-top: 1rem;
+    text-align: center;
+    font-size: 0.95rem;
+    color: #6a0dad;
+  }
+  
+  .signup-footer a {
+    color: #a36dfd;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+  }
+  
+  .signup-footer a:hover {
+    color: #d66dff;
+    text-decoration: underline;
+  }

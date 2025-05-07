@@ -1,4 +1,3 @@
-// src/components/LogoutButton.jsx
 import { useNavigate } from "react-router-dom";
 
 const LogoutButton = () => {
@@ -10,18 +9,8 @@ const LogoutButton = () => {
   };
 
   return (
-    <div style={{ textAlign: "right", marginBottom: "1rem" }}>
-      <button
-        onClick={handleLogout}
-        style={{
-          background: "#dc3545",
-          color: "#fff",
-          border: "none",
-          padding: "0.5rem 1rem",
-          borderRadius: "5px",
-          cursor: "pointer"
-        }}
-      >
+    <div className="logout-button-container">
+      <button className="logout-button" onClick={handleLogout}>
         Se déconnecter
       </button>
     </div>

@@ -4,8 +4,7 @@ import RunnerButtons from '../components/RunnerButtons';
 import VisualizationButtons from '../components/VisualizationButtons';
 import TrainingResults from '../components/TrainingResults';
 import Visualizations from '../components/Visualizations';
-import LogoutButton from "../components/LogoutButton";
-import '../styles/UserPage.css'; // Réutilisation du style utilisateur
+import '../styles/DeveloperPage.css'; 
 
 function DeveloperPage() {
   const [hasTrained, setHasTrained] = useState(false);
@@ -67,10 +66,9 @@ function DeveloperPage() {
   };
 
   return (
-    <div className="user-container">
-      <LogoutButton />
+    <div className="dev-container">
       <h1>💻 Interface Développeur — Édition des Trainers</h1>
-
+      <div className='card-section'>
       <RunnerButtons onTrain={handleTrain} loading={loading} />
       <VisualizationButtons
         onBefore={fetchVisualBefore}
@@ -80,7 +78,9 @@ function DeveloperPage() {
       />
       <TrainingResults accuracy={accuracy} output={output} />
       <Visualizations images={images} />
+      </div>
 
+      <div className='card-section'>
       <h2>📝 Modifier les scripts</h2>
       <CodeEditor title="gcn_trainer.py" apiEndpoint="http://127.0.0.1:8000/api/code/update/gcn/" />
       <CodeEditor title="gat_trainer.py" apiEndpoint="http://127.0.0.1:8000/api/code/update/gat/" />
@@ -90,6 +90,7 @@ function DeveloperPage() {
       <CodeEditor title="qgat_trainer.py" apiEndpoint="http://127.0.0.1:8000/api/code/update/qgat/" />
       <CodeEditor title="qgcn_trainer_augmented.py" apiEndpoint="http://127.0.0.1:8000/api/code/update/qgcn_augmented/" />
       <CodeEditor title="qgat_trainer_augmented.py" apiEndpoint="http://127.0.0.1:8000/api/code/update/qgat_augmented/" />
+      </div>
     </div>
   );
 }
