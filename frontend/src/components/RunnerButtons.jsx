@@ -1,15 +1,25 @@
 function RunnerButtons({ onTrain, loading }) {
-    return (
-      <div style={{ marginTop: '1rem' }}>
-        <button onClick={() => onTrain('gcn')} disabled={loading} style={{ marginRight: '1rem' }}>
-          Lancer GCN
+  const models = [
+    "gcn", "gat", "gcn_aug", "gat_aug",
+    "qgcn", "qgat", "qgcn_aug", "qgat_aug"
+  ];
+
+  return (
+    <div style={{ marginBottom: "1rem" }}>
+      <div className="button-group">
+      {models.map((model) => (
+        <button
+          key={model}
+          onClick={() => onTrain(model)}
+          disabled={loading}
+
+        >
+          {model.toUpperCase()}
         </button>
-        <button onClick={() => onTrain('gat')} disabled={loading}>
-          Lancer GAT
-        </button>
+      ))}
       </div>
-    );
-  }
-  
-  export default RunnerButtons;
-  
+    </div>
+  );
+}
+
+export default RunnerButtons;

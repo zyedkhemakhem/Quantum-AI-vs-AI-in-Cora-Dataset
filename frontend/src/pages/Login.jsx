@@ -1,6 +1,8 @@
 import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import '../styles/Login.css';
+
 
 const Login = () => {
   const navigate = useNavigate();
@@ -40,68 +42,40 @@ const Login = () => {
   };
 
   return (
-    <div style={{
-      display: "flex",
-      justifyContent: "center",
-      alignItems: "center",
-      background: "#f0f0f0",
-      width: "100vw",
-      height: "100vh",
+    
+    
+    <div className="login-container" >
+      <form onSubmit={handleLogin} className="login-form">
+        <h2>Connexion</h2>
+        {error && <p className="login-error">{error}</p>}
 
-
-    }}>
-      <form onSubmit={handleLogin} style={{
-        background: "#fff",
-        padding: "2rem",
-        borderRadius: "10px",
-        boxShadow: "0 0 10px rgba(0,0,0,0.1)",
-        width: "300px",
-      }}>
-        <h2 style={{ textAlign: "center", marginBottom: "1rem" }}>Connexion</h2>
-        {error && <p style={{ color: "red", textAlign: "center" }}>{error}</p>}
-
-        <div style={{ marginBottom: "1rem" }}>
+        <div >
           <label>Nom d'utilisateur</label>
           <input
             type="text"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
             required
-            style={{ width: "100%", padding: "0.5rem", marginTop: "0.3rem" }}
           />
         </div>
 
-        <div style={{ marginBottom: "1rem" }}>
+        <div >
           <label>Mot de passe</label>
           <input
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
-            style={{ width: "100%", padding: "0.5rem", marginTop: "0.3rem" }}
           />
         </div>
 
-        <button
-          type="submit"
-          style={{
-            width: "100%",
-            padding: "0.7rem",
-            background: "#007bff",
-            color: "#fff",
-            border: "none",
-            borderRadius: "5px",
-            cursor: "pointer",
-          }}
-        >
+        <button type="submit" >
           Se connecter
         </button>
       </form>
-      <p
-      style={{color:"red" }}
-      > Pas encore inscrit ? <a href="/signup">Créer un compte</a></p>
-
+      <p className="login-footer" > Pas encore inscrit ? <a href="/signup">Créer un compte</a></p>
     </div>
+    
   );
 };
 

@@ -3,8 +3,7 @@ import RunnerButtons from '../components/RunnerButtons';
 import VisualizationButtons from '../components/VisualizationButtons';
 import TrainingResults from '../components/TrainingResults';
 import Visualizations from '../components/Visualizations';
-import '../styles/UserPage.css'; // ton css user
-import LogoutButton from "../components/LogoutButton";
+import '../styles/UserPage.css'; 
 
 
 function UserPage() {
@@ -68,13 +67,13 @@ function UserPage() {
 
   return (
     <div className="user-container">
-      <LogoutButton />
       <h1>🧪 Interface Utilisateur</h1>
-
-      <RunnerButtons onTrain={handleTrain} loading={loading} />
+      <div className='card-section'>
+      <RunnerButtons onTrain={handleTrain} loading={loading} className="button-group" />
       <VisualizationButtons onBefore={fetchVisualBefore} onAfter={fetchVisualAfter} loading={loading} hasTrained={hasTrained} />
       <TrainingResults accuracy={accuracy} parameters={null} output={output} />
-      <Visualizations images={images} />
+      <Visualizations images={images} className='visualization-image'/>
+      </div>
     </div>
   );
 }

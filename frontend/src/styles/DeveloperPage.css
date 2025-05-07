@@ -1,28 +1,69 @@
-/* frontend/src/styles/DeveloperPage.css */
+/* Conteneur principal, réutilise le style utilisateur */
+.dev-container {
+  max-width: 1200px;
+  margin: 3rem auto;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  align-items: center;
+}
 
-.developer-container {
-    padding: 2rem;
-    max-width: 1200px;
-    margin: 0 auto;
-    background: #f5f5f5;
-    font-family: 'Segoe UI', sans-serif;
+/* Titre principal */
+.dev-container h1 {
+  font-size: 2rem;
+  color: var(--primary-dark);
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+/* Sous-titre pour la section éditeur */
+.dev-container h2 {
+  font-size: 1.5rem;
+  margin-top: 3rem;
+  color: #4b0082;
+  text-align: center;
+}
+
+/* Espacement uniforme entre tous les composants */
+.runner-buttons,
+.visualization-buttons,
+.training-results,
+.visualizations,
+.code-editor {
+  width: 100%;
+  max-width: 900px;
+}
+
+/* Regroupe les éditeurs de code */
+.code-editor {
+  background-color: var(--card-bg);
+  border-radius: 16px;
+  box-shadow: 0 6px 12px var(--shadow);
+  padding: 1rem 2rem;
+  margin-bottom: 2rem;
+  animation: fadeIn 0.4s ease-in-out;
+}
+
+/* Fade-in animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
   }
-  
-  .developer-container h1 {
-    text-align: center;
-    margin-bottom: 2rem;
-    color: #333;
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
-  
-  .code-section {
-    margin-bottom: 2rem;
-  }
-  
-  .code-section h2 {
-    margin-bottom: 0.5rem;
-    color: #007bff;
-    font-size: 1.25rem;
-    border-bottom: 1px solid #ddd;
-    padding-bottom: 0.25rem;
-  }
-  
+}
+
+.card-section {
+  background-color: var(--card-bg);
+  border-radius: 16px;
+  box-shadow: 0 6px 12px var(--shadow);
+  padding: 2rem;
+  width: 80%;
+  max-width: 800px;
+  animation: fadeIn 0.6s ease-in-out;
+  transition: transform 0.3s ease;
+}
