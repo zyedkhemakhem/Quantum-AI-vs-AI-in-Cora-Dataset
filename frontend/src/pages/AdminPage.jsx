@@ -1,12 +1,11 @@
-import UserManager from "../components/UserManager";
-import '../styles/AdminPage.css'; // optionnel si tu as du style
 import LogoutButton from "../components/LogoutButton";
+import UserManager from "../components/UserManager";
 
 function AdminPage() {
   return (
     <div className="admin-container">
       <LogoutButton />
-      <h1>🎩 Interface Admin — Gestion des Utilisateurs</h1>
+      <h1>🎛️ Tableau de bord Admin</h1>
       <UserManager />
     </div>
   );
