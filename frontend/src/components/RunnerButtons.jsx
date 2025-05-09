@@ -1,8 +1,9 @@
 function RunnerButtons({ onTrain, loading }) {
   const models = [
-    "gcn", "gat", "gcn_aug", "gat_aug",
-    "qgcn", "qgat", "qgcn_aug", "qgat_aug"
+    "gcn", "gat", "gcn_augmented", "gat_augmented",
+    "qgcn", "qgat", "qgcn_augmented", "qgat_augmented"
   ];
+
 
   return (
     <div style={{ marginBottom: "1rem" }}>

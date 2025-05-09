@@ -4,6 +4,7 @@ import RunnerButtons from '../components/RunnerButtons';
 import VisualizationButtons from '../components/VisualizationButtons';
 import TrainingResults from '../components/TrainingResults';
 import Visualizations from '../components/Visualizations';
+import LogoutButton from '../components/LogoutButton';
 import '../styles/DeveloperPage.css'; 
 
 function DeveloperPage() {
@@ -91,6 +92,8 @@ function DeveloperPage() {
       <CodeEditor title="qgcn_trainer_augmented.py" apiEndpoint="http://127.0.0.1:8000/api/code/update/qgcn_augmented/" />
       <CodeEditor title="qgat_trainer_augmented.py" apiEndpoint="http://127.0.0.1:8000/api/code/update/qgat_augmented/" />
       </div>
+      <LogoutButton className="logout-button" />
+
     </div>
   );
 }

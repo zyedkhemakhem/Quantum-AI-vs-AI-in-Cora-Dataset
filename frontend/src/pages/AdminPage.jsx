@@ -1,5 +1,6 @@
 import UserManager from "../components/UserManager";
 import AdminCreateUser from "../components/AdminCreateUser";
+import LogoutButton from "../components/LogoutButton";
 import "../styles/AdminPage.css";
 
 
@@ -19,6 +20,8 @@ function AdminPage() {
         <div className="card-section">
           <UserManager />
         </div>
+
+        <LogoutButton className="logout-button" />
       </div>
 
       
