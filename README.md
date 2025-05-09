@@ -82,4 +82,27 @@ npm install react react-router-dom axios
 # Lancer le serveur frontend
 npm run dev
 
+HomeScreen :
+![image](https://github.com/user-attachments/assets/cedefe70-2dab-47d4-84b8-e6725804360d)
+
+
+Page Connexion :
+![image](https://github.com/user-attachments/assets/a6337d95-8272-4866-8727-18c457beb5d5)
+
+Capture Formulaire :
+![image](https://github.com/user-attachments/assets/8dc4effa-75a2-4b60-a2e0-cecfec211800)
+
+Interface Utilisatuer:
+![image](https://github.com/user-attachments/assets/423bc5bb-c76b-4784-8406-3ab3dff9fc23)
+
+interface Admin:
+![image](https://github.com/user-attachments/assets/f7e496b1-b526-47bf-a708-acb78991d361)
+
+Interface Admin : 
+![image](https://github.com/user-attachments/assets/dbf9d39d-a48c-4405-ac62-249abeecfacc)
+
+Interface Developper:
+![image](https://github.com/user-attachments/assets/69600bbf-7ca8-401b-bd68-edc4d5c09292)
+
+
 
