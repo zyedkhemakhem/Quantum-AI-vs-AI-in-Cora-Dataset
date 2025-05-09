@@ -1,55 +1,45 @@
-# 💡 Quantum AI VS AI
+💡 Quantum AI VS AI
+Application web de simulation et gestion de modèles d'intelligence artificielle, développée dans le cadre du Projet Conception de Developpement (PCD) à l'ENSI.
 
-> Application web de simulation et gestion de modèles d'intelligence artificielle, développée dans le cadre du Projet Conception de Developpement (PCD) à l'ENSI.
-
----
-
-## 🎯 Objectif
-
+🎯 Objectif
 Permettre à différents types d'utilisateurs (admin, développeur, utilisateur normal) de :
-- Gérer les comptes (admin)
-- Développer et intégrer des modèles IA (developer)
-- Choisir et évaluer les performances des modèles via des KPIs visuels (user)
 
----
+Gérer les comptes (admin)
 
-## 🛠️ Technologies utilisées
+Développer et intégrer des modèles IA (developer)
 
-### Backend
-- Django & Django REST Framework
-- JWT (Json Web Token)
-- Pipenv pour la gestion d'environnement
-- SQLite 
+Choisir et évaluer les performances des modèles via des KPIs visuels (user)
 
-### Frontend
-- React.js
-- React Router DOM
-- Axios
-- CSS modules
+🛠️ Technologies utilisées
+Backend
+Django & Django REST Framework
 
----
+JWT (Json Web Token)
 
-## 👥 Rôles
+Pipenv pour la gestion d'environnement
 
-| Rôle                   | Fonctionnalités principales                                                     |
-|-----------------------|--------------------------------------------------------------------------------|
-| **Admin**           | Gérer les utilisateurs (CRUD)                                                |
-| **Développeur** | Ajouter des modèles, datasets, surveiller les performances |
-| **Utilisateur**      | Sélectionner un modèle, visualiser ses KPIs                        |
+SQLite
 
----
+Frontend
+React.js
 
-## 🔐 Authentification
+React Router DOM
 
-L'authentification est basée sur JWT. Le token est stocké côté frontend (`localStorage`) après la connexion.
+Axios
 
----
+CSS modules
 
-## 🚀 Installation & Démarrage
+👥 Rôles
+Rôle	Fonctionnalités principales
+Admin	Gérer les utilisateurs (CRUD)
+Développeur	Ajouter des modèles, datasets, surveiller les performances
+Utilisateur	Sélectionner un modèle, visualiser ses KPIs
+🔐 Authentification
+L'authentification est basée sur JWT. Le token est stocké côté frontend (localStorage) après la connexion.
 
-### 🧩 Partie Backend
-
-```bash
+🚀 Installation & Démarrage
+Backend
+bash
 cd backend
 
 # Installer pipenv si non installé
@@ -69,11 +59,8 @@ python manage.py migrate
 
 # Lancer le serveur backend
 python manage.py runserver
-
-
-### 🧩Partie Frontend (dans un autre terminal)
-
-```bash
+Frontend
+bash
 cd frontend
 
 # Installer les dépendances React
@@ -81,7 +68,7 @@ npm install react react-router-dom axios
 
 # Lancer le serveur frontend
 npm run dev
-
+Captures d'écran
 
 ### 🏠 HomeScreen
 ![image](https://github.com/user-attachments/assets/cedefe70-2dab-47d4-84b8-e6725804360d)
