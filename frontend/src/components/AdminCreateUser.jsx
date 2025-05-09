@@ -7,7 +7,7 @@ function AdminCreateUser() {
     username: "",
     email: "",
     password: "",
-    role: "user", // default
+    role: "user", 
   });
 
   const [message, setMessage] = useState("");

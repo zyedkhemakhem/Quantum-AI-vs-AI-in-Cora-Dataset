@@ -24,11 +24,11 @@ const SignUp = () => {
     try {
       await axios.post("http://localhost:8000/api/user/register/", {
         ...formData,
-        is_admin: false,       // Forcé à false
-        is_developer: false    // Forcé à false 
+        is_admin: false,       
+        is_developer: false    
       });
 
-      navigate("/user"); // Redirection vers la page de user après succès
+      navigate("/user"); 
     } catch (err) {
       console.error(err);
       setError("Erreur lors de l'inscription. Vérifiez les champs.");
