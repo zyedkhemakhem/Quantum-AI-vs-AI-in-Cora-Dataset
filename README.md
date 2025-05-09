@@ -1,6 +1,6 @@
 # 💡 Quantum AI VS AI
 
-> Application web de simulation et gestion de modèles d'intelligence artificielle, développée dans le cadre du Projet de Fin d'Études (PCD) à l'ENSI.
+> Application web de simulation et gestion de modèles d'intelligence artificielle, développée dans le cadre du Projet Conception de Developpement (PCD) à l'ENSI.
 
 ---
 
