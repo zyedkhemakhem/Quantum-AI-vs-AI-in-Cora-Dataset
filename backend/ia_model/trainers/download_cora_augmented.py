@@ -7,19 +7,15 @@ from torch_geometric.data import Data
 import random
 import numpy as np
 
-# Dossier de sauvegarde
 DEST_DIR = "CoraAugmented"
 os.makedirs(DEST_DIR, exist_ok=True)
 
-# Chargement du dataset original Cora
 dataset = Planetoid(root="Cora", name="Cora", transform=NormalizeFeatures())
 data = dataset[0]
 
 original_features = data.x
 original_labels = data.y
-original_edges = data.edge_index.T  # shape: [num_edges, 2]
-
-# MIXUP pour générer 50 000 nœuds
+original_edges = data.edge_index.T  
 TARGET_NODES = 50000
 num_to_generate = TARGET_NODES - original_features.shape[0]
 
@@ -38,23 +34,19 @@ for i in range(num_to_generate):
     new_features.append(x_new)
     new_labels.append(y_new)
 
-    # Ajoute des arêtes bidirectionnelles vers un nœud existant
     target = original_edges[random.randint(0, len(original_edges) - 1)][0].item()
     new_node_index = original_features.shape[0] + i
     new_edges.append([new_node_index, target])
     new_edges.append([target, new_node_index])
 
-# Conversion tensors
 new_features = torch.stack(new_features)
 new_labels = torch.tensor(new_labels, dtype=torch.long)
 new_edges = torch.tensor(new_edges, dtype=torch.long)
 
-# Fusion complète
 all_features = torch.cat([original_features, new_features], dim=0)
 all_labels = torch.cat([original_labels, new_labels], dim=0)
 all_edges = torch.cat([original_edges, new_edges], dim=0)
 
-# Masques : train/val/test
 num_nodes = all_features.shape[0]
 indices = np.random.permutation(num_nodes)
 
@@ -69,7 +61,6 @@ train_mask[indices[:train_size]] = True
 val_mask[indices[train_size:train_size+val_size]] = True
 test_mask[indices[train_size+val_size:]] = True
 
-# Sauvegarde CSVs
 print(f"💾 Sauvegarde dans : {DEST_DIR}/")
 
 pd.DataFrame(all_features.numpy()).to_csv(os.path.join(DEST_DIR, "cora_features.csv"), index=False)

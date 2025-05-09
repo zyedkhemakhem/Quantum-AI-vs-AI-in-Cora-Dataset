@@ -5,7 +5,6 @@ from torch_geometric.nn import GATv2Conv
 import io
 from contextlib import redirect_stdout
 
-# Chargement du dataset
 dataset = Planetoid(root=".", name="Cora")
 data = dataset[0]
 

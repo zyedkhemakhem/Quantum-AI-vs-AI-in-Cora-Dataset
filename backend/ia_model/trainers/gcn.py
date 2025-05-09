@@ -6,7 +6,6 @@ import pandas as pd
 import io
 from contextlib import redirect_stdout
 
-# --- Chargement du dataset local depuis fichiers CSV ---
 def load_local_cora():
     features = torch.tensor(pd.read_csv("cora_features.csv").values, dtype=torch.float)
     labels = torch.tensor(pd.read_csv("cora_labels.csv")["label"].values, dtype=torch.long)
@@ -20,7 +19,6 @@ def load_local_cora():
     return Data(x=features, y=labels, edge_index=edges,
                 train_mask=train_mask, val_mask=val_mask, test_mask=test_mask)
 
-# --- Ajout de bruit epsilon (perturbation des features) ---
 def augment_data_with_epsilon(data, num_augments=3, epsilon=0.01):
     augmented_x = [data.x]
     augmented_y = [data.y]
@@ -53,7 +51,6 @@ def augment_data_with_epsilon(data, num_augments=3, epsilon=0.01):
     return Data(x=x_combined, y=y_combined, edge_index=edge_index_combined,
                 train_mask=train_mask_combined, val_mask=val_mask_combined, test_mask=test_mask_combined)
 
-# --- Suppression aléatoire d’arêtes (DropEdge) ---
 def drop_edges(data, drop_rate=0.1):
     num_edges = data.edge_index.shape[1]
     num_keep = int((1 - drop_rate) * num_edges)
@@ -63,7 +60,6 @@ def drop_edges(data, drop_rate=0.1):
     return Data(x=data.x.clone(), y=data.y.clone(), edge_index=edge_index_dropped,
                 train_mask=data.train_mask.clone(), val_mask=data.val_mask.clone(), test_mask=data.test_mask.clone())
 
-# --- Mixup pour créer de nouveaux nœuds synthétiques ---
 def mixup_nodes(data, num_mix=30000):
     x_mix = []
     y_mix = []
@@ -90,7 +86,6 @@ def mixup_nodes(data, num_mix=30000):
 
     return data
 
-# --- Modèle GCN ---
 class GCN(torch.nn.Module):
     def __init__(self, dim_in, dim_g, dim_h, dim_out):
         super().__init__()
@@ -110,7 +105,6 @@ class GCN(torch.nn.Module):
         x = self.gcn3(x, edge_index)
         return x, F.log_softmax(x, dim=1)
 
-# --- Fonctions d'entraînement et test ---
 def accuracy(pred_y, y):
     return ((pred_y == y).sum() / len(y)).item()
 
@@ -145,13 +139,10 @@ def test(model, data):
 def run_gcn_large_mix():
     data = load_local_cora()
 
-    # Augmentation epsilon
     data = augment_data_with_epsilon(data, num_augments=1, epsilon=0.01)
 
-    # Mixup
-    data = mixup_nodes(data, num_mix=90000)  # ou un autre nombre selon ton objectif
+    data = mixup_nodes(data, num_mix=90000) 
 
-    # ✅ Affichage demandé
     print(f"Taille du dataset après augmentation : {data.x.shape[0]} nœuds")
 
     model = GCN(data.num_features, 256, 128, int(data.y.max().item()) + 1)

@@ -16,7 +16,6 @@ from .permissions import IsAdmin, IsDeveloper, IsNormalUser
 
 from django.db import IntegrityError
 
-#génère un token d'authentification JWT (refresh + access) pour un utilisateur donné
 def get_tokens_for_user(user):
     refresh = RefreshToken.for_user(user)
     return {
@@ -24,7 +23,6 @@ def get_tokens_for_user(user):
         'access': str(refresh.access_token),
     }
 
-#Authentifie l'utilisateur
 class LoginView(APIView):
     def post(self, request):
         serializer = LoginSerializer(data=request.data)
@@ -48,10 +46,8 @@ class LoginView(APIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
-#Crée un nouvel utilisateur
 class RegisterView(APIView):
     permission_classes = [AllowAny]  
-    #CREATE
     def post(self, request):
         serializer = RegisterSerializer(data=request.data)
         if serializer.is_valid():
@@ -60,8 +56,6 @@ class RegisterView(APIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     
 
-#Renvoie les infos de l’utilisateur connecté.
-#Accessible seulement si l'utilisateur est authentifié grâce à IsAuthenticated.
 class UserProfile(APIView):
     permission_classes = [IsAuthenticated, IsNormalUser]
     #READ
@@ -81,7 +75,6 @@ class UserDetailView(APIView):
         except CustomUser.DoesNotExist:
             return None
         
-    #UPDATE
     def put(self, request, *args, **kwargs):
         pk = kwargs.get("pk")
         user = self.get_object(pk)
@@ -94,7 +87,6 @@ class UserDetailView(APIView):
             return Response(serializer.data)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     
-    #DELETE
     def delete(self, request, pk):
         try:
             user = CustomUser.objects.get(pk=pk)
@@ -108,7 +100,6 @@ class UserDetailView(APIView):
             }, status=status.HTTP_400_BAD_REQUEST)
     
 
-# VUE POUR DEVELOPER
 class DeveloperDashboard(APIView):
     permission_classes = [IsAuthenticated, IsDeveloper]
 
@@ -116,7 +107,6 @@ class DeveloperDashboard(APIView):
         return Response({"message": "Bienvenue sur le tableau de bord développeur."})
 
 
-# VUE POUR USER NORMAL
 class UserDashboard(APIView):
     permission_classes = [IsAuthenticated, IsNormalUser]
 

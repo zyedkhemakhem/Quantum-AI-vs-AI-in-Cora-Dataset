@@ -6,7 +6,6 @@ from torch_geometric.nn import GCNConv
 import io
 from contextlib import redirect_stdout
 
-# Charger Cora original
 dataset = Planetoid(root=".", name="Cora", transform=NormalizeFeatures())
 data = dataset[0]
 

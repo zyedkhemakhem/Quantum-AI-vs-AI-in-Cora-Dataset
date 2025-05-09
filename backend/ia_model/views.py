@@ -1,27 +1,22 @@
-# backend/ia_model/views.py
 
 import os
 import json
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 
-# Trainers « classiques »
 from .trainers.gcn_trainer import run_gcn
 from .trainers.gat_trainer import run_gat
 
-# Trainers pour Cora augmenté
 from .trainers.gcn_trainer_augmented import run_gcn_augmented
 from .trainers.gat_trainer_augmented import run_gat_augmented
 
-# Trainers quantiques pour Cora original
 from .trainers.qgcn_trainer import run_qgcn
 from .trainers.qgat_trainer import run_qgat
 
-# Trainers quantiques pour Cora augmenté
 from .trainers.qgcn_trainer_augmented import run_qgcn_augmented
 from .trainers.qgat_trainer_augmented import run_qgat_augmented
 
-# Visualisations
+
 from .visuals.before_training import plot_graph, plot_node_degrees
 from .visuals.after_training import (
     plot_tsne_before_training,
@@ -66,7 +61,6 @@ def visualize_after(request):
         "accuracy_degree": plot_accuracy_by_degree()
     })
 
-# —— Helpers pour PUT / GET des scripts ——
 
 def _update_code_generic(request, filename):
     if request.method != "PUT":
@@ -92,7 +86,6 @@ def _get_code_generic(request, filename):
     except Exception as e:
         return JsonResponse({"error": str(e)}, status=500)
 
-# —— 8 endpoints PUT pour éditer chaque trainer —— 
 @csrf_exempt
 def update_code_gcn(request):
     return _update_code_generic(request, "gcn_trainer.py")
@@ -125,7 +118,6 @@ def update_code_qgcn_augmented(request):
 def update_code_qgat_augmented(request):
     return _update_code_generic(request, "qgat_trainer_augmented.py")
 
-# —— 8 endpoints GET pour récupérer chaque trainer —— 
 def get_code_gcn(request):
     return _get_code_generic(request, "gcn_trainer.py")
 
